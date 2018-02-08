@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +7,24 @@
 <title>Customers</title>
 </head>
 <body>
-    
+
     <h1>Customers</h1>
-    
+
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+        </tr>
+
+        <c:forEach items="${customers}" var="customer">
+            <tr>
+                <td><c:out value="${customer.firstName}"></c:out></td>
+                <td><c:out value="${customer.lastName}"></c:out></td>
+                <td><c:out value="${customer.email}"></c:out></td>
+            </tr>
+        </c:forEach>
+    </table>
+
 </body>
 </html>
