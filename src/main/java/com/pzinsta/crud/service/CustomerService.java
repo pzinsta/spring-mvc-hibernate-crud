@@ -6,4 +6,6 @@ import com.pzinsta.crud.entity.Customer;
 
 public interface CustomerService {
     List<Customer> getCustomers();
+
+    void addCustomer(Customer customer);
 }

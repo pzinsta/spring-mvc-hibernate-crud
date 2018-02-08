@@ -11,6 +11,8 @@
 
     <h1>Customers</h1>
 
+    <a href='<c:url value="add"></c:url>'>Add Customer</a>
+
     <table>
         <tr>
             <th>First Name</th>

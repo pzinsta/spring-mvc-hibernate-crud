@@ -30,4 +30,10 @@ public class CustomerServiceImpl implements CustomerService {
         this.customerDAO = customerDAO;
     }
 
+    @Override
+    @Transactional
+    public void addCustomer(Customer customer) {
+        customerDAO.addCustomer(customer);
+    }
+
 }

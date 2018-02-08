@@ -7,4 +7,6 @@ import com.pzinsta.crud.entity.Customer;
 public interface CustomerDAO {
     
     List<Customer> getCustomers();
+
+    void addCustomer(Customer customer);
 }

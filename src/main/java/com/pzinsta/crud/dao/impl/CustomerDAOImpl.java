@@ -28,4 +28,9 @@ public class CustomerDAOImpl implements CustomerDAO {
         return session.createQuery(criteriaQuery).getResultList();
     }
 
+    @Override
+    public void addCustomer(Customer customer) {
+        sessionFactory.getCurrentSession().save(customer);
+    }
+
 }
