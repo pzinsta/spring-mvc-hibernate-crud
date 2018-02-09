@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,17 +24,29 @@ public class CustomerController {
         model.addAttribute("customers", customerService.getCustomers());
         return "listCustomers";
     }
-    
+
     @GetMapping("/add")
     public String showAddCustomerForm(Model model) {
         model.addAttribute("customer", new Customer());
         return "addCustomer";
     }
- 
+
     @PostMapping("/add")
     public String addCustomer(@ModelAttribute("customer") Customer customer) {
         customerService.addCustomer(customer);
-        
+
+        return "redirect:/customer/list";
+    }
+
+    @GetMapping("/update/{id}")
+    public String showUpdateCustomerForm(@PathVariable("id") int id, Model model) {
+        model.addAttribute("customer", customerService.getCustomerById(id));
+        return "updateCustomer";
+    }
+
+    @PostMapping("/update/**")
+    public String updateCustomer(@ModelAttribute("customer") Customer customer) {
+        customerService.updateCustomer(customer);
         return "redirect:/customer/list";
     }
     
@@ -44,5 +57,5 @@ public class CustomerController {
     public void setCustomerService(CustomerService customerService) {
         this.customerService = customerService;
     }
-    
+
 }
