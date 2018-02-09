@@ -12,4 +12,6 @@ public interface CustomerService {
     Customer getCustomerById(int id);
 
     void updateCustomer(Customer customer);
+
+    void deleteCustomerById(int id);
 }

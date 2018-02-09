@@ -3,10 +3,12 @@ package com.pzinsta.crud.dao.impl;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -41,6 +43,14 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public void updateCustomer(Customer customer) {
         sessionFactory.getCurrentSession().update(customer);
+    }
+
+    @Override
+    public void deleteCustomerById(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("delete from Customer where id=:id");
+        query.setParameter("id", id);
+        query.executeUpdate();
     }
 
 }
